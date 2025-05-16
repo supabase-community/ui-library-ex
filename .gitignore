@@ -21,3 +21,5 @@ supabase_ui-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+/priv/static/
