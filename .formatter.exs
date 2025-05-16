@@ -1,4 +1,7 @@
 # Used by "mix format"
 [
-  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
+  import_deps: [:phoenix],
+  subdirectories: ["priv/*/migrations"],
+  plugins: [Phoenix.LiveView.HTMLFormatter],
+  inputs: ["*.{ex,exs,heex}", "{config,lib,test}/**/*.{ex,exs,heex}", "storybook/**/*.exs"]
 ]
