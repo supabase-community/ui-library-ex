@@ -11,5 +11,8 @@
   "description": "",
   "dependencies": {
     "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }

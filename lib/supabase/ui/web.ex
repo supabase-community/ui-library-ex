@@ -55,24 +55,11 @@ defmodule Supabase.UI.Web do
       # HTML escaping functionality
       import Phoenix.HTML
       import Phoenix.LiveView.TagEngine, only: [component: 3]
-      import PhoenixHTMLHelpers.Form, only: [submit: 1, submit: 2]
-      # Core UI components and translation
+      # Core UI components
       import Supabase.UI
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
-
-      # Routes generation with the ~p sigil
-      unquote(verified_routes())
-    end
-  end
-
-  def verified_routes do
-    quote do
-      use Phoenix.VerifiedRoutes,
-        endpoint: Supabase.UI.Web.Endpoint,
-        router: Supabase.UI.Web.Router,
-        statics: Supabase.UI.Web.static_paths()
     end
   end
 

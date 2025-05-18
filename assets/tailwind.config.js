@@ -2,10 +2,7 @@
 module.exports = {
   important: ".supabase-ui-web",
   darkMode: ["class"],
-  content: [
-    "./lib/**/*.{ex,heex}",
-    "../storybook/**/*.*exs"
-  ],
+  content: ["./lib/**/*.{ex,heex}", "../storybook/**/*.*exs"],
   theme: {
     container: {
       center: true,
@@ -82,4 +79,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
