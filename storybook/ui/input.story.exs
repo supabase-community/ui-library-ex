@@ -8,14 +8,6 @@ defmodule Storybook.UI.Input do
   def function, do: &Supabase.UI.input/1
   def imports, do: [{Supabase.UI, []}]
 
-  def doc do
-    """
-    An input component for user data entry.
-
-    Input fields allow users to enter text and data in forms.
-    """
-  end
-
   def attributes do
     [
       %Attr{
@@ -112,9 +104,6 @@ defmodule Storybook.UI.Input do
             description: "Username input with label",
             attributes: %{
               placeholder: "Enter username",
-              id: "username"
-            },
-            extra_assigns: %{
               label: "Username",
               id: "username"
             }
@@ -125,11 +114,8 @@ defmodule Storybook.UI.Input do
             attributes: %{
               type: "email",
               placeholder: "Enter email",
-              id: "email"
-            },
-            extra_assigns: %{
-              label: "Email Address",
-              id: "email"
+              id: "email",
+              label: "Email Address"
             }
           }
         ]

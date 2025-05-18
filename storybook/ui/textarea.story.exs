@@ -8,14 +8,6 @@ defmodule Storybook.UI.Textarea do
   def function, do: &Supabase.UI.textarea/1
   def imports, do: [{Supabase.UI, []}]
 
-  def doc do
-    """
-    A textarea component for multiline text input.
-
-    Textarea fields allow users to enter longer text content spanning multiple lines.
-    """
-  end
-
   def attributes do
     [
       %Attr{

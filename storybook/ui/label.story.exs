@@ -8,14 +8,6 @@ defmodule Storybook.UI.Label do
   def function, do: &Supabase.UI.label/1
   def imports, do: [{Supabase.UI, []}]
 
-  def doc do
-    """
-    A label component for form inputs.
-
-    Labels help users understand what information is required in a form field.
-    """
-  end
-
   def attributes do
     [
       %Attr{

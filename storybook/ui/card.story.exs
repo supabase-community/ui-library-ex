@@ -8,14 +8,6 @@ defmodule Storybook.UI.Card do
   def function, do: &Supabase.UI.card/1
   def imports, do: [{Supabase.UI, []}]
 
-  def doc do
-    """
-    A card container component.
-
-    Cards are used to group related content and actions, providing a clear separation of concerns in the UI.
-    """
-  end
-
   def attributes do
     [
       %PhoenixStorybook.Stories.Attr{

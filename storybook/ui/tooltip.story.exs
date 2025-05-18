@@ -8,14 +8,6 @@ defmodule Storybook.UI.Tooltip do
   def function, do: &Supabase.UI.tooltip/1
   def imports, do: [{Supabase.UI, []}]
 
-  def doc do
-    """
-    A tooltip component for displaying additional information.
-
-    Tooltips provide contextual information when hovering over an element.
-    """
-  end
-
   def attributes do
     [
       %Attr{

@@ -6,16 +6,6 @@ defmodule Storybook.UI.Link do
   alias PhoenixStorybook.Stories.Variation
 
   def function, do: &Supabase.UI.link/1
-  # Do not import Supabase.UI directly to avoid function name conflicts
-  def imports, do: []
-
-  def doc do
-    """
-    A link component for navigation.
-
-    Links allow users to navigate to other pages or sections of the application.
-    """
-  end
 
   def attributes do
     [

@@ -8,14 +8,6 @@ defmodule Storybook.UI.Avatar do
   def function, do: &Supabase.UI.avatar/1
   def imports, do: [{Supabase.UI, []}]
 
-  def doc do
-    """
-    An avatar component for user profile pictures.
-
-    Avatars represent users in the interface, typically displaying a profile picture or initials.
-    """
-  end
-
   def attributes do
     [
       %PhoenixStorybook.Stories.Attr{
@@ -82,7 +74,6 @@ defmodule Storybook.UI.Avatar do
           %Variation{
             id: :avatar_image,
             description: "Avatar image",
-            function: &Supabase.UI.avatar_image/1,
             attributes: %{
               src: "https://github.com/shadcn.png",
               alt: "User"
@@ -91,7 +82,6 @@ defmodule Storybook.UI.Avatar do
           %Variation{
             id: :avatar_fallback,
             description: "Avatar fallback",
-            function: &Supabase.UI.avatar_fallback/1,
             slots: ["JD"]
           }
         ]

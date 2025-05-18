@@ -7,16 +7,6 @@ defmodule Storybook.UI.Button do
   alias PhoenixStorybook.Stories.VariationGroup
 
   def function, do: &Supabase.UI.button/1
-  # Do not import Supabase.UI directly to avoid function name conflicts
-  def imports, do: []
-
-  def doc do
-    """
-    A button component for user interactions.
-
-    Buttons allow users to perform actions with a single click or tap.
-    """
-  end
 
   def attributes do
     [

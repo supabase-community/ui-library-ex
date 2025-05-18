@@ -8,14 +8,6 @@ defmodule Storybook.UI.Progress do
   def function, do: &Supabase.UI.progress/1
   def imports, do: [{Supabase.UI, []}]
 
-  def doc do
-    """
-    A progress bar component.
-
-    Progress bars visualize the completion status of an operation or task.
-    """
-  end
-
   def attributes do
     [
       %Attr{
