@@ -19,7 +19,6 @@ defmodule Supabase.UI.Web do
 
   def static_paths, do: ~w(assets)
 
-  @spec router :: Macro.t()
   def router do
     quote do
       use Phoenix.Router, helpers: false
@@ -30,10 +29,18 @@ defmodule Supabase.UI.Web do
     end
   end
 
-  @spec channel :: Macro.t()
   def channel do
     quote do
       use Phoenix.Channel
+    end
+  end
+
+  def live_view do
+    quote do
+      use Phoenix.LiveView,
+        layout: {Supabase.UI.Web.Layouts, :app}
+
+      unquote(html_helpers())
     end
   end
 

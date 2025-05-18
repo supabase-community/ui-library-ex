@@ -1,8 +1,6 @@
 defmodule Supabase.UI.Web.Router do
   use Supabase.UI.Web, :router
 
-  import PhoenixStorybook.Router
-
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -12,12 +10,9 @@ defmodule Supabase.UI.Web.Router do
     plug :put_secure_browser_headers
   end
 
-  scope "/" do
-    storybook_assets()
-  end
-
   scope "/", Supabase.UI.Web do
     pipe_through(:browser)
-    live_storybook("/storybook", backend_module: Supabase.UI.Web.Storybook)
+
+    live "/", ComponentsPreviewLive, :index
   end
 end

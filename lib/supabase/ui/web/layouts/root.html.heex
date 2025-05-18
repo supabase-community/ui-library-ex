@@ -9,11 +9,12 @@
     <.live_title>
       {assigns[:page_title] || "Supabase UI Phoenix Live View"}
     </.live_title>
+    <link rel="icon" type="image/png" href="https://supabase.com/favicon/favicon-32x32.png" />
     <link phx-track-static rel="stylesheet" href="/assets/supabase-ui.css" />
     <script defer phx-track-static type="text/javascript" src="/assets/supabase-ui.js">
     </script>
   </head>
-  <body class="bg-white supabase-ui-web">
+  <body>
     {@inner_content}
   </body>
 </html>

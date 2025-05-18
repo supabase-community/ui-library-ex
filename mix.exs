@@ -35,7 +35,6 @@ defmodule Supabase.UI.MixProject do
       {:jason, "~> 1.2"},
       {:phoenix, "~> 1.7"},
       {:phoenix_live_view, "~> 1.0"},
-      {:phoenix_storybook, "~> 0.8.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:esbuild, "~> 0.9", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
@@ -50,10 +49,9 @@ defmodule Supabase.UI.MixProject do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind supabase_ui", "tailwind storybook", "esbuild supabase_ui"],
+      "assets.build": ["tailwind supabase_ui", "esbuild supabase_ui"],
       "assets.deploy": [
         "tailwind supabase_ui --minify",
-        "tailwind storybook --minify",
         "esbuild supabase_ui --minify",
         "phx.digest"
       ]
