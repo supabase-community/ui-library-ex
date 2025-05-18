@@ -1,8 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  important: ".supabase-ui-web",
   darkMode: ["class", '[data-theme="dark"]'],
-  content: ["./lib/**/*.{ex,heex}", "../storybook/**/*.*exs"],
+  content: ["../lib/**/*.{ex,heex}"],
   theme: {
     container: {
       center: true,
@@ -12,50 +11,59 @@ module.exports = {
       },
     },
     extend: {
+      maxWidth: {
+        site: "128rem",
+      },
       colors: {
-        background:
-          "color-mix(in srgb, hsl(var(--background)) 100%, transparent)",
-        foreground:
-          "color-mix(in srgb, hsl(var(--foreground)) 100%, transparent)",
-        border: "color-mix(in srgb, hsl(var(--border)) 100%, transparent)",
-        input: "color-mix(in srgb, hsl(var(--input)) 100%, transparent)",
-        ring: "color-mix(in srgb, hsl(var(--ring)) 100%, transparent)",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
         primary: {
-          DEFAULT: "color-mix(in srgb, hsl(var(--primary)) 100%, transparent)",
-          foreground:
-            "color-mix(in srgb, hsl(var(--primary-foreground)) 100%, transparent)",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT:
-            "color-mix(in srgb, hsl(var(--secondary)) 100%, transparent)",
-          foreground:
-            "color-mix(in srgb, hsl(var(--secondary-foreground)) 100%, transparent)",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
-          DEFAULT:
-            "color-mix(in srgb, hsl(var(--destructive)) 100%, transparent)",
-          foreground:
-            "color-mix(in srgb, hsl(var(--destructive-foreground)) 100%, transparent)",
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "color-mix(in srgb, hsl(var(--muted)) 100%, transparent)",
-          foreground:
-            "color-mix(in srgb, hsl(var(--muted-foreground)) 100%, transparent)",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "color-mix(in srgb, hsl(var(--accent)) 100%, transparent)",
-          foreground:
-            "color-mix(in srgb, hsl(var(--accent-foreground)) 100%, transparent)",
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
-          DEFAULT: "color-mix(in srgb, hsl(var(--popover)) 100%, transparent)",
-          foreground:
-            "color-mix(in srgb, hsl(var(--popover-foreground)) 100%, transparent)",
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "color-mix(in srgb, hsl(var(--card)) 100%, transparent)",
-          foreground:
-            "color-mix(in srgb, hsl(var(--card-foreground)) 100%, transparent)",
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
+        chart: {
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))",
+          3: "hsl(var(--chart-3))",
+          4: "hsl(var(--chart-4))",
+          5: "hsl(var(--chart-5))",
         },
       },
       borderRadius: {

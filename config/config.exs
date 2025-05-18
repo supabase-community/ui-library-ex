@@ -4,7 +4,7 @@ config :esbuild,
   version: "0.25.0",
   supabase_ui: [
     args:
-      ~w(js/supabase-ui.js js/storybook.js --bundle --target=es2022 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(js/supabase-ui.js --bundle --target=es2022 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
@@ -25,19 +25,13 @@ config :supabase_ui, Supabase.UI.Web.Endpoint,
   server: true
 
 config :tailwind,
-  version: "4.0.9",
+  version: "3.3.0",
   supabase_ui: [
     args: ~w(
+      --config=assets/tailwind.config.js
       --input=assets/css/supabase-ui.css
       --output=priv/static/assets/supabase-ui.css
     ),
-    cd: Path.expand("..", __DIR__)
-  ],
-  storybook: [
-    args: ~w(
-          --input=assets/css/storybook.css
-          --output=priv/static/assets/storybook.css
-        ),
     cd: Path.expand("..", __DIR__)
   ]
 

@@ -49,10 +49,9 @@ defmodule Supabase.UI.MixProject do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind supabase_ui", "tailwind storybook", "esbuild supabase_ui"],
+      "assets.build": ["tailwind supabase_ui", "esbuild supabase_ui"],
       "assets.deploy": [
         "tailwind supabase_ui --minify",
-        "tailwind storybook --minify",
         "esbuild supabase_ui --minify",
         "phx.digest"
       ]

@@ -22,14 +22,11 @@ config :supabase_ui, Supabase.UI.Web.Endpoint,
   reloadable_compilers: [:elixir],
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:supabase_ui, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:supabase_ui, ~w(--watch)]},
-    storybook: {Tailwind, :install_and_run, [:storybook, ~w(--watch)]}
+    tailwind: {Tailwind, :install_and_run, [:supabase_ui, ~w(--watch)]}
   ],
   live_reload: [
     patterns: [
-      ~r"storybook/.*(exs)$",
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"lib/supabase/ui/.*(ex|heex)$",
-      ~r"storybook/.*(exs)$"
+      ~r"lib/supabase/ui/.*(ex|heex)$"
     ]
   ]

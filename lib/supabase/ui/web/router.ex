@@ -13,6 +13,6 @@ defmodule Supabase.UI.Web.Router do
   scope "/", Supabase.UI.Web do
     pipe_through(:browser)
 
-    live "/components", ComponentsPreviewLive, :index
+    live "/", ComponentsPreviewLive, :index
   end
 end
