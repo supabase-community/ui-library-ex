@@ -2,151 +2,67 @@
  * Phoenix LiveView Hooks for Supabase UI components
  */
 
-// Scroll behavior for chat components
-const ScrollToBottom = {
+// Tooltip custom behavior for LiveView
+const Tooltip = {
   mounted() {
-    this.scrollToBottom();
-    this.observer = new MutationObserver(() => this.scrollToBottom());
-    this.observer.observe(this.el, { childList: true, subtree: true });
-  },
-
-  updated() {
-    this.scrollToBottom();
-  },
-
-  beforeDestroy() {
-    if (this.observer) {
-      this.observer.disconnect();
+    // Track position for exact placement
+    if (this.el.dataset.tooltipPosition) {
+      this.position = this.el.dataset.tooltipPosition;
+    } else {
+      this.position = "top";
     }
+
+    // Find tooltip content
+    this.tooltip = this.el.querySelector("[data-tooltip-content]");
+
+    if (!this.tooltip) return;
+
+    // Position tooltip correctly based on parent position
+    this.positionTooltip();
+
+    // Handle window resize events
+    window.addEventListener("resize", () => this.positionTooltip());
   },
 
-  scrollToBottom() {
-    this.el.scrollTop = this.el.scrollHeight;
-  },
-};
-
-// File upload dropzone functionality
-const Dropzone = {
-  mounted() {
-    const targetId = this.el.dataset.uploadTarget;
-    const fileInput = document.getElementById(targetId);
-    const form = document.getElementById(`${targetId}-form`);
-
-    if (!fileInput || !form) return;
-
-    // Handle click to open file dialog
-    this.el.addEventListener("click", (e) => {
-      if (
-        e.target.tagName !== "BUTTON" &&
-        e.target.tagName !== "A" &&
-        e.target.tagName !== "INPUT"
-      ) {
-        e.preventDefault();
-        fileInput.click();
-      }
-    });
-
-    // Handle drag and drop events
-    this.el.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      this.el.classList.add("bg-muted/50");
-    });
-
-    this.el.addEventListener("dragleave", (e) => {
-      e.preventDefault();
-      this.el.classList.remove("bg-muted/50");
-    });
-
-    this.el.addEventListener("drop", (e) => {
-      e.preventDefault();
-      this.el.classList.remove("bg-muted/50");
-
-      if (e.dataTransfer.files.length > 0) {
-        const files = e.dataTransfer.files;
-
-        // Create a new DataTransfer object
-        const dataTransfer = new DataTransfer();
-
-        // Add files to the DataTransfer object
-        for (let i = 0; i < files.length; i++) {
-          dataTransfer.items.add(files[i]);
-        }
-
-        // Set the files to the file input
-        fileInput.files = dataTransfer.files;
-
-        // Trigger change event
-        fileInput.dispatchEvent(new Event("change", { bubbles: true }));
-      }
-    });
-  },
-};
-
-// Realtime cursor tracking and visualization
-const RealtimeCursors = {
-  mounted() {
-    this.throttleMs = 50;
-    this.lastSent = 0;
-
-    this.handleMouseMove = this.throttle((e) => {
-      const rect = this.el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      if (x >= 0 && y >= 0 && x <= rect.width && y <= rect.height) {
-        this.pushEvent("cursor_move", { x, y });
-      }
-    }, this.throttleMs);
-
-    this.el.addEventListener("mousemove", this.handleMouseMove);
-
-    // Initially position cursors based on data-cursors
-    try {
-      const cursors = JSON.parse(this.el.dataset.cursors || "{}");
-      Object.entries(cursors).forEach(([userId, cursor]) => {
-        this.updateCursorPosition(userId, cursor);
-      });
-    } catch (error) {
-      console.error("Error parsing cursor data:", error);
-    }
-  },
-
-  updated() {
-    try {
-      const cursors = JSON.parse(this.el.dataset.cursors || "{}");
-      Object.entries(cursors).forEach(([userId, cursor]) => {
-        this.updateCursorPosition(userId, cursor);
-      });
-    } catch (error) {
-      console.error("Error parsing cursor data:", error);
-    }
-  },
-
-  beforeDestroy() {
-    this.el.removeEventListener("mousemove", this.handleMouseMove);
-  },
-
-  updateCursorPosition(userId, cursor) {
-    const cursorEl = document.getElementById(`cursor-${userId}`);
-    if (cursorEl && cursor.x !== undefined && cursor.y !== undefined) {
-      cursorEl.style.left = `${cursor.x}px`;
-      cursorEl.style.top = `${cursor.y}px`;
-    }
-  },
-
-  throttle(func, limit) {
-    return (...args) => {
-      const now = Date.now();
-      if (now - this.lastSent >= limit) {
-        this.lastSent = now;
-        func(...args);
-      }
+  positionTooltip() {
+    // Apply appropriate positioning classes based on position attribute
+    const positions = {
+      top: "bottom-full left-1/2 transform -translate-x-1/2 -translate-y-2",
+      bottom: "top-full left-1/2 transform -translate-x-1/2 translate-y-2",
+      left: "right-full top-1/2 transform -translate-y-1/2 -translate-x-2",
+      right: "left-full top-1/2 transform -translate-y-1/2 translate-x-2",
     };
+
+    // Clear all position classes
+    Object.values(positions).forEach((cls) => {
+      const classes = cls.split(" ");
+      classes.forEach((c) => this.tooltip.classList.remove(c));
+    });
+
+    // Apply correct position classes
+    const posClasses = positions[this.position].split(" ");
+    posClasses.forEach((c) => this.tooltip.classList.add(c));
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.resizeHandler);
+  },
+};
+
+// Theme handling for toggling between light and dark mode
+const ThemeHandler = {
+  mounted() {
+    // Listen for theme toggle events
+    this.handleEvent("toggle-theme", ({ theme }) => {
+      document.documentElement.classList.remove("dark");
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    });
   },
 };
 
 export default {
-  ScrollToBottom,
-  Dropzone,
-  RealtimeCursors,
+  Tooltip,
+  ThemeHandler,
 };

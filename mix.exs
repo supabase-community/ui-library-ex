@@ -35,7 +35,6 @@ defmodule Supabase.UI.MixProject do
       {:jason, "~> 1.2"},
       {:phoenix, "~> 1.7"},
       {:phoenix_live_view, "~> 1.0"},
-      {:phoenix_storybook, "~> 0.8.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:esbuild, "~> 0.9", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},

@@ -187,7 +187,7 @@ defmodule Supabase.UI do
     ~H"""
     <div
       class={[
-        "rounded-lg border bg-card text-card-foreground shadow-sm",
+        "rounded-xl border bg-card text-card-foreground shadow",
         @class
       ]}
       {@rest}
@@ -250,15 +250,15 @@ defmodule Supabase.UI do
 
   def card_title(assigns) do
     ~H"""
-    <h3
+    <div
       class={[
-        "text-lg font-semibold leading-none tracking-tight",
+        "font-semibold leading-none tracking-tight",
         @class
       ]}
       {@rest}
     >
       {render_slot(@inner_block)}
-    </h3>
+    </div>
     """
   end
 
@@ -383,7 +383,7 @@ defmodule Supabase.UI do
     ~H"""
     <div
       class={[
-        "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
+        "relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full",
         @class
       ]}
       {@rest}
@@ -478,7 +478,7 @@ defmodule Supabase.UI do
     ~H"""
     <textarea
       class={[
-        "flex min-h-[80px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
         @class
       ]}
       {@rest}
@@ -560,7 +560,8 @@ defmodule Supabase.UI do
     <div class="relative group" {@rest}>
       {render_slot(@inner_block)}
       <div class={[
-        "absolute z-10 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity whitespace-nowrap rounded bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md",
+        "z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground",
+        "absolute invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity",
         "bottom-full left-1/2 transform -translate-x-1/2 -translate-y-2",
         @class
       ]}>
@@ -591,10 +592,10 @@ defmodule Supabase.UI do
 
   def progress(assigns) do
     ~H"""
-    <div class="relative w-full overflow-hidden rounded-full bg-secondary" {@rest}>
+    <div class="bg-primary/20 relative h-2 w-full overflow-hidden rounded-full" {@rest}>
       <div
         class={[
-          "h-2 w-full flex-1 bg-primary transition-all",
+          "bg-primary h-full w-full flex-1 transition-all",
           @class
         ]}
         style={"transform: translateX(-#{100 - percentage(@value, @max)}%)"}
