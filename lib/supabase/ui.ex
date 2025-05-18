@@ -69,8 +69,7 @@ defmodule Supabase.UI do
     """
   end
 
-  defp button_variant_class("default"),
-    do: "bg-primary text-primary-foreground shadow hover:bg-primary/90"
+  defp button_variant_class("default"), do: "bg-primary text-primary-foreground shadow hover:bg-primary/90"
 
   defp button_variant_class("destructive"),
     do: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90"
@@ -78,8 +77,7 @@ defmodule Supabase.UI do
   defp button_variant_class("outline"),
     do: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
 
-  defp button_variant_class("secondary"),
-    do: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80"
+  defp button_variant_class("secondary"), do: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80"
 
   defp button_variant_class("ghost"), do: "hover:bg-accent hover:text-accent-foreground"
   defp button_variant_class("link"), do: "text-primary underline-offset-4 hover:underline"
@@ -474,8 +472,7 @@ defmodule Supabase.UI do
   attr :class, :string, default: nil
 
   attr :rest, :global,
-    include:
-      ~w(autocomplete cols disabled form maxlength minlength name placeholder readonly required rows value wrap)
+    include: ~w(autocomplete cols disabled form maxlength minlength name placeholder readonly required rows value wrap)
 
   def textarea(assigns) do
     ~H"""
@@ -527,18 +524,15 @@ defmodule Supabase.UI do
     """
   end
 
-  defp link_variant_class("default"),
-    do: "bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+  defp link_variant_class("default"), do: "bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
 
   defp link_variant_class("secondary"),
     do: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2"
 
   defp link_variant_class("destructive"),
-    do:
-      "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 h-9 px-4 py-2"
+    do: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 h-9 px-4 py-2"
 
-  defp link_variant_class("ghost"),
-    do: "hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
+  defp link_variant_class("ghost"), do: "hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
 
   @doc """
   Renders a tooltip component.

@@ -23,3 +23,6 @@ supabase_ui-*.tar
 /tmp/
 
 /priv/static/
+/priv/plts/
+
+/assets/node_modules/

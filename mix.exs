@@ -1,6 +1,9 @@
 defmodule Supabase.UI.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+  @source_url "https://github.com/supabase-community/ui-library-ex"
+
   def project do
     [
       app: :supabase_ui,
@@ -8,8 +11,11 @@ defmodule Supabase.UI.MixProject do
       elixir: "~> 1.18",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      dialyzer: [plt_local_path: "priv/plts", ignore_warnings: ".dialyzerignore.exs"],
-      aliases: aliases()
+      docs: docs(),
+      package: package(),
+      description: description(),
+      aliases: aliases(),
+      dialyzer: [plt_local_path: "priv/plts", ignore_warnings: ".dialyzerignore.exs"]
     ]
   end
 
@@ -34,6 +40,7 @@ defmodule Supabase.UI.MixProject do
       {:esbuild, "~> 0.9", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.3", runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: [:dev], runtime: false},
+      {:styler, "~> 1.4", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false}
     ]
@@ -51,5 +58,37 @@ defmodule Supabase.UI.MixProject do
         "phx.digest"
       ]
     ]
+  end
+
+  defp package do
+    %{
+      licenses: ["MIT"],
+      contributors: ["zoedsoupe"],
+      links: %{
+        "GitHub" => @source_url,
+        "Docs" => "https://hexdocs.pm/supabase_ui"
+      },
+      files:
+        ~w[lib mix.exs priv/static/assets/js/hooks.js priv/static/assets/supabase-ui.css README.md LICENSE CHANGELOG.md]
+    }
+  end
+
+  defp docs do
+    [
+      main: "Supabase.UI",
+      extras: [
+        "README.md",
+        "CHANGELOG.md"
+      ],
+      source_url: @source_url,
+      source_ref: "v#{@version}",
+      formatters: ["html"]
+    ]
+  end
+
+  defp description do
+    """
+    Implementation of Supabase UI for Phoenix Live View
+    """
   end
 end

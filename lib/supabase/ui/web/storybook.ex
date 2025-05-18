@@ -1,4 +1,5 @@
 defmodule Supabase.UI.Web.Storybook do
+  @moduledoc false
   use PhoenixStorybook,
     otp_app: :supabase_ui,
     content_path: Path.expand("../../../../storybook", __DIR__),

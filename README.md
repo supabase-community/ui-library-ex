@@ -1,7 +1,8 @@
 # Supabase UI Library (Phoenix/Elixir)
 
-[![Hex.pm](https://img.shields.io/hexpm/v/supabase_ui.svg)](https://hex.pm/packages/supabase_ui)
-[![Docs](https://img.shields.io/badge/hex-docs-blue.svg)](https://hexdocs.pm/supabase_ui)
+[![hex.pm](https://img.shields.io/hexpm/v/supabase_ui.svg)](https://hex.pm/packages/supabase_ui)
+[![docs](https://img.shields.io/badge/hex-docs-blue.svg)](https://hexdocs.pm/supabase_ui)
+[![ci](https://github.com/supabase-community/ui-library-ex/actions/workflows/ci.yml/badge.svg)](https://github.com/supabase-community/ui-library-ex/actions/workflows/ci.yml)
 
 ## Installation
 

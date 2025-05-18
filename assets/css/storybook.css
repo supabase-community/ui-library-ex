@@ -1,0 +1,20 @@
+/* This is your custom storybook stylesheet. */
+@import "tailwindcss";
+
+/*
+ * Put your component styling within the Tailwind utilities layer. 
+ * See the https://hexdocs.pm/phoenix_storybook/sandboxing.html guide for more info.
+ */
+
+@layer utilities {
+  * {
+    font-family: system-ui;
+  }
+
+  /* Storybook theme customization */
+  .supabase-ui-web {
+    --psb-primary-text: #3ecf8e;
+    --psb-primary-hover: #3ad887;
+    --psb-primary-active: #7ae0af;
+  }
+}
