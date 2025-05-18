@@ -192,8 +192,4 @@ defmodule Storybook.MyPage do
     </div>
     """
   end
-
-  defp doc_link(page) do
-    "https://hexdocs.pm/phoenix_storybook/PhoenixStorybook.#{page}.html"
-  end
 end
