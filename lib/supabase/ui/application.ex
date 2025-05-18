@@ -1,5 +1,8 @@
 defmodule Supabase.UI.Application do
+  @moduledoc false
   use Application
+
+  alias Supabase.UI.Web.Endpoint
 
   @impl true
   def start(_, _) do
@@ -11,14 +14,14 @@ defmodule Supabase.UI.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    Supabase.UI.Web.Endpoint.config_change(changed, removed)
+    Endpoint.config_change(changed, removed)
     :ok
   end
 
   def children do
     [
       {Phoenix.PubSub, name: Supabase.UI.PubSub},
-      Supabase.UI.Web.Endpoint
+      Endpoint
     ]
   end
 end

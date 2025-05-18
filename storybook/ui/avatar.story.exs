@@ -1,5 +1,9 @@
 defmodule Storybook.UI.Avatar do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Variation
+  alias PhoenixStorybook.Stories.VariationGroup
 
   def function, do: &Supabase.UI.avatar/1
   def imports, do: [{Supabase.UI, []}]
@@ -34,7 +38,7 @@ defmodule Storybook.UI.Avatar do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :with_image,
         description: "Avatar with image",
         slots: [
@@ -44,7 +48,7 @@ defmodule Storybook.UI.Avatar do
           """
         ]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :with_fallback,
         description: "Avatar with fallback (no image)",
         slots: [
@@ -53,7 +57,7 @@ defmodule Storybook.UI.Avatar do
           """
         ]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :custom_size,
         description: "Avatar with custom size",
         attributes: %{
@@ -71,11 +75,11 @@ defmodule Storybook.UI.Avatar do
 
   def variation_groups do
     [
-      %PhoenixStorybook.Stories.VariationGroup{
+      %VariationGroup{
         id: :avatar_parts,
         description: "Individual avatar components",
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :avatar_image,
             description: "Avatar image",
             function: &Supabase.UI.avatar_image/1,
@@ -84,7 +88,7 @@ defmodule Storybook.UI.Avatar do
               alt: "User"
             }
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :avatar_fallback,
             description: "Avatar fallback",
             function: &Supabase.UI.avatar_fallback/1,
@@ -92,7 +96,7 @@ defmodule Storybook.UI.Avatar do
           }
         ]
       },
-      %PhoenixStorybook.Stories.VariationGroup{
+      %VariationGroup{
         id: :avatar_group,
         description: "Avatar group example",
         template: """
@@ -101,7 +105,7 @@ defmodule Storybook.UI.Avatar do
         </div>
         """,
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :avatar1,
             attributes: %{class: "ring-2 ring-background"},
             slots: [
@@ -110,7 +114,7 @@ defmodule Storybook.UI.Avatar do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :avatar2,
             attributes: %{class: "ring-2 ring-background"},
             slots: [
@@ -119,7 +123,7 @@ defmodule Storybook.UI.Avatar do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :avatar3,
             attributes: %{class: "ring-2 ring-background"},
             slots: [
@@ -128,7 +132,7 @@ defmodule Storybook.UI.Avatar do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :avatar4,
             attributes: %{class: "ring-2 ring-background"},
             slots: [
@@ -137,11 +141,10 @@ defmodule Storybook.UI.Avatar do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :more_avatar,
             attributes: %{
-              class:
-                "ring-2 ring-background flex items-center justify-center bg-muted text-muted-foreground"
+              class: "ring-2 ring-background flex items-center justify-center bg-muted text-muted-foreground"
             },
             slots: ["+2"]
           }

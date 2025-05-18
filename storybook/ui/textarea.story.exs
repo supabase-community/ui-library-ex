@@ -1,5 +1,9 @@
 defmodule Storybook.UI.Textarea do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Attr
+  alias PhoenixStorybook.Stories.Variation
 
   def function, do: &Supabase.UI.textarea/1
   def imports, do: [{Supabase.UI, []}]
@@ -14,33 +18,33 @@ defmodule Storybook.UI.Textarea do
 
   def attributes do
     [
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :class,
         type: :string,
         doc: "Additional CSS classes"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :placeholder,
         type: :string,
         doc: "Placeholder text"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :disabled,
         type: :boolean,
         doc: "Whether the textarea is disabled"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :required,
         type: :boolean,
         doc: "Whether the textarea is required"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :rows,
         type: :integer,
         doc: "Number of visible text lines",
         default: nil
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :value,
         type: :string,
         doc: "Textarea value"
@@ -50,14 +54,14 @@ defmodule Storybook.UI.Textarea do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :default,
         description: "Default textarea",
         attributes: %{
           placeholder: "Type your message here..."
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :with_rows,
         description: "Textarea with specified rows",
         attributes: %{
@@ -65,7 +69,7 @@ defmodule Storybook.UI.Textarea do
           rows: 5
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :disabled,
         description: "Disabled textarea",
         attributes: %{
@@ -73,7 +77,7 @@ defmodule Storybook.UI.Textarea do
           disabled: true
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :with_value,
         description: "Textarea with value",
         attributes: %{
@@ -94,7 +98,7 @@ defmodule Storybook.UI.Textarea do
         </div>
         """,
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :description_field,
             description: "Description field with label",
             template: """
@@ -104,7 +108,7 @@ defmodule Storybook.UI.Textarea do
             </div>
             """
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :comments_field,
             description: "Comments field with label",
             template: """

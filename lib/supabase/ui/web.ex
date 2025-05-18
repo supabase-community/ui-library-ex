@@ -19,27 +19,14 @@ defmodule Supabase.UI.Web do
 
   def static_paths, do: ~w(assets)
 
-  @spec controller :: Macro.t()
-  def controller do
-    quote do
-      use Phoenix.Controller,
-        formats: [:html, :json],
-        layouts: [html: Supabase.UI.Web.Layouts]
-
-      import Plug.Conn
-
-      unquote(verified_routes())
-    end
-  end
-
   @spec router :: Macro.t()
   def router do
     quote do
       use Phoenix.Router, helpers: false
 
-      import Plug.Conn
       import Phoenix.Controller
       import Phoenix.LiveView.Router
+      import Plug.Conn
     end
   end
 
@@ -47,28 +34,6 @@ defmodule Supabase.UI.Web do
   def channel do
     quote do
       use Phoenix.Channel
-    end
-  end
-
-  def live_view do
-    quote do
-      use Phoenix.LiveView, layout: {Supabase.UI.Web.Layouts, :app}
-
-      unquote(html_helpers())
-    end
-  end
-
-  def live_component do
-    quote do
-      use Phoenix.LiveComponent
-      unquote(html_helpers())
-    end
-  end
-
-  def component do
-    quote do
-      use Phoenix.Component
-      unquote(html_helpers())
     end
   end
 
@@ -89,13 +54,10 @@ defmodule Supabase.UI.Web do
     quote do
       # HTML escaping functionality
       import Phoenix.HTML
-      import PhoenixHTMLHelpers.Form, only: [submit: 1, submit: 2]
       import Phoenix.LiveView.TagEngine, only: [component: 3]
+      import PhoenixHTMLHelpers.Form, only: [submit: 1, submit: 2]
       # Core UI components and translation
       import Supabase.UI
-      import Supabase.UI.Auth
-      import Supabase.UI.Realtime
-      import Supabase.UI.Storage
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

@@ -1,5 +1,9 @@
 defmodule Storybook.UI.Card do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Variation
+  alias PhoenixStorybook.Stories.VariationGroup
 
   def function, do: &Supabase.UI.card/1
   def imports, do: [{Supabase.UI, []}]
@@ -34,7 +38,7 @@ defmodule Storybook.UI.Card do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :basic,
         description: "Basic card",
         slots: [
@@ -45,7 +49,7 @@ defmodule Storybook.UI.Card do
           """
         ]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :with_custom_class,
         description: "Card with custom styling",
         attributes: %{
@@ -64,11 +68,11 @@ defmodule Storybook.UI.Card do
 
   def variation_groups do
     [
-      %PhoenixStorybook.Stories.VariationGroup{
+      %VariationGroup{
         id: :complete_card,
         description: "Complete card with all sections",
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :profile_card,
             description: "Profile card example",
             attributes: %{class: "max-w-md"},
@@ -96,7 +100,7 @@ defmodule Storybook.UI.Card do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :notification_card,
             description: "Notification card example",
             attributes: %{class: "max-w-md"},
@@ -120,11 +124,11 @@ defmodule Storybook.UI.Card do
           }
         ]
       },
-      %PhoenixStorybook.Stories.VariationGroup{
+      %VariationGroup{
         id: :card_parts,
         description: "Individual card components",
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :card_with_header,
             description: "Card with header",
             slots: [
@@ -138,7 +142,7 @@ defmodule Storybook.UI.Card do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :card_with_title,
             description: "Card with title",
             slots: [
@@ -151,7 +155,7 @@ defmodule Storybook.UI.Card do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :card_with_description,
             description: "Card with description",
             slots: [
@@ -164,7 +168,7 @@ defmodule Storybook.UI.Card do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :card_with_content,
             description: "Card with content",
             slots: [
@@ -175,7 +179,7 @@ defmodule Storybook.UI.Card do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :card_with_footer,
             description: "Card with footer",
             slots: [

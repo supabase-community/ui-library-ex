@@ -1,5 +1,10 @@
 defmodule Storybook.UI.Button do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Attr
+  alias PhoenixStorybook.Stories.Variation
+  alias PhoenixStorybook.Stories.VariationGroup
 
   def function, do: &Supabase.UI.button/1
   # Do not import Supabase.UI directly to avoid function name conflicts
@@ -15,34 +20,34 @@ defmodule Storybook.UI.Button do
 
   def attributes do
     [
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :variant,
         type: :string,
         doc: "Button style variant",
         values: ~w(default destructive outline secondary ghost link),
         default: "default"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :size,
         type: :string,
         doc: "Button size",
         values: ~w(default sm lg icon),
         default: "default"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :type,
         type: :string,
         doc: "HTML button type attribute",
         values: ~w(button submit reset),
         default: "button"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :disabled,
         type: :boolean,
         doc: "Whether the button is disabled",
         default: false
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :class,
         type: :string,
         doc: "Additional CSS classes"
@@ -62,42 +67,42 @@ defmodule Storybook.UI.Button do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :default,
         description: "Default button",
         slots: ["Button"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :destructive,
         description: "Destructive action button",
         attributes: %{variant: "destructive"},
         slots: ["Delete"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :outline,
         description: "Outline button",
         attributes: %{variant: "outline"},
         slots: ["Outline"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :secondary,
         description: "Secondary button",
         attributes: %{variant: "secondary"},
         slots: ["Secondary"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :ghost,
         description: "Ghost button",
         attributes: %{variant: "ghost"},
         slots: ["Ghost"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :link,
         description: "Link button",
         attributes: %{variant: "link"},
         slots: ["Link"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :disabled,
         description: "Disabled button",
         attributes: %{disabled: true},
@@ -108,22 +113,22 @@ defmodule Storybook.UI.Button do
 
   def variation_groups do
     [
-      %PhoenixStorybook.Stories.VariationGroup{
+      %VariationGroup{
         id: :sizes,
         description: "Button sizes",
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :small,
             description: "Small button",
             attributes: %{size: "sm"},
             slots: ["Small"]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :default_size,
             description: "Default button size",
             slots: ["Default"]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :large,
             description: "Large button",
             attributes: %{size: "lg"},
@@ -131,7 +136,7 @@ defmodule Storybook.UI.Button do
           }
         ]
       },
-      %PhoenixStorybook.Stories.VariationGroup{
+      %VariationGroup{
         id: :icon_buttons,
         description: "Icon buttons",
         template: """
@@ -140,19 +145,19 @@ defmodule Storybook.UI.Button do
         </div>
         """,
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :icon_default,
             description: "Default icon button",
             attributes: %{size: "icon"},
             slots: ["👍"]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :icon_ghost,
             description: "Ghost icon button",
             attributes: %{size: "icon", variant: "ghost"},
             slots: ["⭐"]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :icon_outline,
             description: "Outline icon button",
             attributes: %{size: "icon", variant: "outline"},

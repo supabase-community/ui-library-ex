@@ -1,5 +1,9 @@
 defmodule Storybook.UI.Progress do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Attr
+  alias PhoenixStorybook.Stories.Variation
 
   def function, do: &Supabase.UI.progress/1
   def imports, do: [{Supabase.UI, []}]
@@ -14,19 +18,19 @@ defmodule Storybook.UI.Progress do
 
   def attributes do
     [
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :value,
         type: :integer,
         doc: "Current progress value",
         default: 0
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :max,
         type: :integer,
         doc: "Maximum progress value",
         default: 100
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :class,
         type: :string,
         doc: "Additional CSS classes"
@@ -36,35 +40,35 @@ defmodule Storybook.UI.Progress do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :default,
         description: "Default progress bar (0%)",
         attributes: %{
           value: 0
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :in_progress,
         description: "Progress in progress (40%)",
         attributes: %{
           value: 40
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :almost_complete,
         description: "Almost complete (75%)",
         attributes: %{
           value: 75
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :complete,
         description: "Complete (100%)",
         attributes: %{
           value: 100
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :custom_max,
         description: "Custom maximum value",
         attributes: %{
@@ -72,7 +76,7 @@ defmodule Storybook.UI.Progress do
           max: 1000
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :custom_class,
         description: "Custom styled progress bar",
         attributes: %{
@@ -94,7 +98,7 @@ defmodule Storybook.UI.Progress do
         </div>
         """,
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :upload_progress,
             description: "Upload progress",
             template: """
@@ -107,7 +111,7 @@ defmodule Storybook.UI.Progress do
             </div>
             """
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :download_progress,
             description: "Download progress",
             template: """
@@ -120,7 +124,7 @@ defmodule Storybook.UI.Progress do
             </div>
             """
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :processing_progress,
             description: "Processing progress",
             template: """

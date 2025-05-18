@@ -1,23 +1,21 @@
 defmodule Storybook.MyPage do
   # See https://hexdocs.pm/phoenix_storybook/PhoenixStorybook.Story.html for full story
   # documentation.
+  @moduledoc false
   use PhoenixStorybook.Story, :page
-
-  import Supabase.UI
-  import Supabase.UI.Auth
 
   def doc, do: "Welcome to Supabase UI Library for Phoenix LiveView"
 
   # Declare an optional tab-based navigation in your page:
   def navigation do
     [
-      {:welcome, "Welcome", {:fa, "hand-wave", :solid}},
-      {:components, "Components", {:fa, "toolbox", :solid}},
-      {:about, "About", {:fa, "circle-info", :solid}}
+      {:welcome, "Welcome"},
+      {:components, "Components"},
+      {:about, "About"}
     ]
   end
 
-  def render(assigns = %{tab: :welcome}) do
+  def render(%{tab: :welcome} = assigns) do
     ~H"""
     <div class="psb-welcome-page">
       <h1 class="text-3xl font-bold mb-6">Supabase UI Library for Phoenix LiveView</h1>
@@ -74,7 +72,7 @@ defmodule Storybook.MyPage do
     """
   end
 
-  def render(assigns = %{tab: :components}) do
+  def render(%{tab: :components} = assigns) do
     ~H"""
     <div class="psb-welcome-page">
       <h1 class="text-3xl font-bold mb-6">Component System</h1>
@@ -123,7 +121,7 @@ defmodule Storybook.MyPage do
     """
   end
 
-  def render(assigns = %{tab: :about}) do
+  def render(%{tab: :about} = assigns) do
     ~H"""
     <div class="psb-welcome-page">
       <h1 class="text-3xl font-bold mb-6">About Supabase UI Library</h1>
@@ -162,33 +160,6 @@ defmodule Storybook.MyPage do
           Supabase SDK for Elixir - for seamless integration with Supabase services
         </li>
       </ul>
-    </div>
-    """
-  end
-
-  defp description_list(assigns) do
-    ~H"""
-    <div class="psb-w-full md:psb-px-8">
-      <div class="md:psb-border-t psb-border-gray-200 psb-px-4 psb-py-5 sm:psb-p-0 md:psb-my-6 psb-w-full">
-        <dl class="sm:psb-divide-y sm:psb-divide-gray-200">
-          <%= for {dt, link} <- @items do %>
-            <div class="psb-py-4 sm:psb-grid sm:psb-grid-cols-3 sm:psb-gap-4 sm:psb-py-5 sm:psb-px-6 psb-max-w-full">
-              <dt class="psb-text-base psb-font-medium psb-text-indigo-700">
-                {dt}
-              </dt>
-              <dd class="psb-mt-1 psb-text-base psb-text-slate-400 sm:psb-col-span-2 sm:psb-mt-0 psb-group psb-cursor-pointer psb-max-w-full">
-                <a
-                  class="group-hover:psb-text-indigo-700 psb-max-w-full psb-inline-block psb-truncate"
-                  href={link}
-                  target="_blank"
-                >
-                  {link}
-                </a>
-              </dd>
-            </div>
-          <% end %>
-        </dl>
-      </div>
     </div>
     """
   end

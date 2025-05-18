@@ -1,5 +1,9 @@
 defmodule Storybook.UI.Link do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Attr
+  alias PhoenixStorybook.Stories.Variation
 
   def function, do: &Supabase.UI.link/1
   # Do not import Supabase.UI directly to avoid function name conflicts
@@ -15,31 +19,31 @@ defmodule Storybook.UI.Link do
 
   def attributes do
     [
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :href,
         type: :string,
         doc: "URL to link to",
         required: true
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :class,
         type: :string,
         doc: "Additional CSS classes"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :variant,
         type: :string,
         doc: "Link style variant",
         values: ~w(default secondary destructive ghost),
         default: "default"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :target,
         type: :string,
         doc: "Link target attribute",
         values: ["_blank", "_self", "_parent", "_top"]
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :rel,
         type: :string,
         doc: "Link relationship attribute"
@@ -59,7 +63,7 @@ defmodule Storybook.UI.Link do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :default,
         description: "Default link",
         attributes: %{
@@ -67,7 +71,7 @@ defmodule Storybook.UI.Link do
         },
         slots: ["Link to page"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :secondary,
         description: "Secondary link",
         attributes: %{
@@ -76,7 +80,7 @@ defmodule Storybook.UI.Link do
         },
         slots: ["Secondary link"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :destructive,
         description: "Destructive link",
         attributes: %{
@@ -85,7 +89,7 @@ defmodule Storybook.UI.Link do
         },
         slots: ["Destructive link"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :ghost,
         description: "Ghost link",
         attributes: %{
@@ -94,7 +98,7 @@ defmodule Storybook.UI.Link do
         },
         slots: ["Ghost link"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :external_link,
         description: "External link",
         attributes: %{
@@ -118,27 +122,27 @@ defmodule Storybook.UI.Link do
         </div>
         """,
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :link_home,
             attributes: %{href: "#", variant: "default"},
             slots: ["Home"]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :link_products,
             attributes: %{href: "#", variant: "secondary"},
             slots: ["Products"]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :link_blog,
             attributes: %{href: "#", variant: "ghost"},
             slots: ["Blog"]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :link_about,
             attributes: %{href: "#", variant: "default"},
             slots: ["About"]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :link_contact,
             attributes: %{href: "#", variant: "destructive"},
             slots: ["Contact"]

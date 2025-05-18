@@ -1,5 +1,9 @@
 defmodule Storybook.UI.Tooltip do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Attr
+  alias PhoenixStorybook.Stories.Variation
 
   def function, do: &Supabase.UI.tooltip/1
   def imports, do: [{Supabase.UI, []}]
@@ -14,13 +18,13 @@ defmodule Storybook.UI.Tooltip do
 
   def attributes do
     [
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :text,
         type: :string,
         doc: "Text to display in the tooltip",
         required: true
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :class,
         type: :string,
         doc: "Additional CSS classes for the tooltip"
@@ -40,7 +44,7 @@ defmodule Storybook.UI.Tooltip do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :default,
         description: "Default tooltip",
         attributes: %{
@@ -52,7 +56,7 @@ defmodule Storybook.UI.Tooltip do
           """
         ]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :icon_tooltip,
         description: "Tooltip on an icon",
         attributes: %{
@@ -64,7 +68,7 @@ defmodule Storybook.UI.Tooltip do
           """
         ]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :custom_tooltip,
         description: "Tooltip with custom styling",
         attributes: %{
@@ -91,7 +95,7 @@ defmodule Storybook.UI.Tooltip do
         </div>
         """,
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :edit_tooltip,
             attributes: %{text: "Edit"},
             slots: [
@@ -100,7 +104,7 @@ defmodule Storybook.UI.Tooltip do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :delete_tooltip,
             attributes: %{text: "Delete"},
             slots: [
@@ -109,7 +113,7 @@ defmodule Storybook.UI.Tooltip do
               """
             ]
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :share_tooltip,
             attributes: %{text: "Share"},
             slots: [

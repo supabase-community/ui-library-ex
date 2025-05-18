@@ -1,5 +1,9 @@
 defmodule Storybook.UI.Input do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Attr
+  alias PhoenixStorybook.Stories.Variation
 
   def function, do: &Supabase.UI.input/1
   def imports, do: [{Supabase.UI, []}]
@@ -14,34 +18,34 @@ defmodule Storybook.UI.Input do
 
   def attributes do
     [
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :type,
         type: :string,
         doc: "HTML input type attribute",
         values: ~w(text email password number tel url search date),
         default: "text"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :class,
         type: :string,
         doc: "Additional CSS classes"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :placeholder,
         type: :string,
         doc: "Placeholder text"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :disabled,
         type: :boolean,
         doc: "Whether the input is disabled"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :required,
         type: :boolean,
         doc: "Whether the input is required"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :value,
         type: :string,
         doc: "Input value"
@@ -51,12 +55,12 @@ defmodule Storybook.UI.Input do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :default,
         description: "Default input",
         attributes: %{placeholder: "Enter text here"}
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :email,
         description: "Email input",
         attributes: %{
@@ -64,7 +68,7 @@ defmodule Storybook.UI.Input do
           placeholder: "example@email.com"
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :password,
         description: "Password input",
         attributes: %{
@@ -72,7 +76,7 @@ defmodule Storybook.UI.Input do
           placeholder: "Enter password"
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :disabled,
         description: "Disabled input",
         attributes: %{
@@ -81,7 +85,7 @@ defmodule Storybook.UI.Input do
           value: "Cannot edit this"
         }
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :with_value,
         description: "Input with value",
         attributes: %{
@@ -103,7 +107,7 @@ defmodule Storybook.UI.Input do
         </div>
         """,
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :username,
             description: "Username input with label",
             attributes: %{
@@ -115,7 +119,7 @@ defmodule Storybook.UI.Input do
               id: "username"
             }
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :email_with_label,
             description: "Email input with label",
             attributes: %{

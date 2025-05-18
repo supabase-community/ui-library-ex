@@ -1,5 +1,9 @@
 defmodule Storybook.UI.Label do
+  @moduledoc false
   use PhoenixStorybook.Story, :component
+
+  alias PhoenixStorybook.Stories.Attr
+  alias PhoenixStorybook.Stories.Variation
 
   def function, do: &Supabase.UI.label/1
   def imports, do: [{Supabase.UI, []}]
@@ -14,12 +18,12 @@ defmodule Storybook.UI.Label do
 
   def attributes do
     [
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :for,
         type: :string,
         doc: "ID of the associated form element"
       },
-      %PhoenixStorybook.Stories.Attr{
+      %Attr{
         id: :class,
         type: :string,
         doc: "Additional CSS classes"
@@ -39,19 +43,19 @@ defmodule Storybook.UI.Label do
 
   def variations do
     [
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :default,
         description: "Default label",
         attributes: %{for: "email"},
         slots: ["Email address"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :required,
         description: "Required field label",
         attributes: %{for: "password"},
         slots: ["Password *"]
       },
-      %PhoenixStorybook.Stories.Variation{
+      %Variation{
         id: :with_custom_class,
         description: "Label with custom styling",
         attributes: %{
@@ -74,7 +78,7 @@ defmodule Storybook.UI.Label do
         </div>
         """,
         variations: [
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :label_with_text_input,
             description: "Label with text input",
             template: """
@@ -84,7 +88,7 @@ defmodule Storybook.UI.Label do
             </div>
             """
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :label_with_email_input,
             description: "Label with email input",
             template: """
@@ -94,7 +98,7 @@ defmodule Storybook.UI.Label do
             </div>
             """
           },
-          %PhoenixStorybook.Stories.Variation{
+          %Variation{
             id: :label_with_password_input,
             description: "Label with password input",
             template: """

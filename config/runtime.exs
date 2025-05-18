@@ -1,7 +1,9 @@
 import Config
 
+alias Supabase.UI.Web.Endpoint
+
 if System.get_env("PHX_SERVER") do
-  config :supabase_ui, Supabase.UI.Web.Endpoint, server: true
+  config :supabase_ui, Endpoint, server: true
 end
 
 if config_env() == :prod do
@@ -9,7 +11,7 @@ if config_env() == :prod do
     System.get_env("SECRET_KEY_BASE") ||
       raise "SECRET_KEY_BASE not available"
 
-  config :supabase_ui, Supabase.UI.Web.Endpoint,
+  config :supabase_ui, Endpoint,
     secret_key_base: secret_key_base,
     url: [host: "example.com"],
     http: [
